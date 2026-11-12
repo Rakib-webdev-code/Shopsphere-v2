@@ -1,0 +1,300 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/*
+ * ShopSphere colour system
+ *
+ * Components use semantic utilities such as `bg-surface`, `text-muted`, and
+ * `border-border` instead of hard-coded zinc/white values. That keeps light and
+ * dark mode in one place and makes the visual language consistent.
+ */
+:root {
+  --background: #f3f5f2;
+  --foreground: #101614;
+
+  --surface: #ffffff;
+  --surface-muted: #f8faf7;
+  --surface-subtle: #eaeee9;
+
+  --border: #dde2dc;
+  --border-strong: #84908a;
+
+  --muted: #4d5752;
+  --muted-strong: #323a36;
+  --muted-soft: #66716b;
+  --faint: #6b7570;
+
+  --strong: #101614;
+  --strong-foreground: #ffffff;
+
+  --accent: #0b5d45;
+  --accent-bright: #12865f;
+  --accent-strong: #08483a;
+  --accent-soft: #e4efe9;
+  --accent-border: #b4d4c5;
+  --accent-solid: #0b5d45;
+  --accent-solid-hover: #08483a;
+
+  /* Highlighter lime: used sparingly for price tags and sale marks. */
+  --highlight: #d8f25c;
+  --highlight-foreground: #1c2a05;
+
+  --danger: #b91c1c;
+  --danger-strong: #991b1b;
+  --danger-soft: #fef2f2;
+  --danger-border: #fecaca;
+
+  --warning: #b45309;
+  --warning-soft: #fffbeb;
+  --warning-border: #fde68a;
+
+  --info: #0369a1;
+  --info-soft: #f0f9ff;
+  --info-border: #bae6fd;
+
+  --shipped: #3730a3;
+  --shipped-soft: #eef2ff;
+  --shipped-border: #c7d2fe;
+
+  /* Glass surfaces used by dashboards, headers and floating panels. */
+  --glass: rgba(255, 255, 255, 0.72);
+  --glass-strong: rgba(255, 255, 255, 0.86);
+  --glass-border: rgba(16, 22, 20, 0.08);
+  --glass-shadow: 0 1px 2px rgba(16, 22, 20, 0.04), 0 8px 30px rgba(16, 22, 20, 0.06);
+  --dash-glow-a: rgba(18, 134, 95, 0.14);
+  --dash-glow-b: rgba(216, 242, 92, 0.16);
+}
+
+html[data-theme="dark"] {
+  --background: #0a0f0d;
+  --foreground: #f1f5f2;
+
+  --surface: #111815;
+  --surface-muted: #161e1a;
+  --surface-subtle: #212b26;
+
+  --border: #25302b;
+  --border-strong: #6d7973;
+
+  --muted: #a3aea8;
+  --muted-strong: #d3dbd6;
+  --muted-soft: #a3aea8;
+  --faint: #98a39d;
+
+  --strong: #f1f5f2;
+  --strong-foreground: #101614;
+
+  --accent: #7fdcb4;
+  --accent-bright: #3fbf8c;
+  --accent-strong: #b4ecd2;
+  --accent-soft: #0d2a20;
+  --accent-border: #1d5a43;
+  --accent-solid: #12865f;
+  --accent-solid-hover: #17a273;
+
+  --highlight: #d8f25c;
+  --highlight-foreground: #1c2a05;
+
+  --danger: #fca5a5;
+  --danger-strong: #fecaca;
+  --danger-soft: #450a0a;
+  --danger-border: #7f1d1d;
+
+  --warning: #fcd34d;
+  --warning-soft: #451a03;
+  --warning-border: #78350f;
+
+  --info: #7dd3fc;
+  --info-soft: #082f49;
+  --info-border: #0c4a6e;
+
+  --shipped: #c7d2fe;
+  --shipped-soft: #1e1b4b;
+  --shipped-border: #3730a3;
+
+  --glass: rgba(17, 24, 21, 0.66);
+  --glass-strong: rgba(17, 24, 21, 0.86);
+  --glass-border: rgba(241, 245, 242, 0.09);
+  --glass-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 10px 40px rgba(0, 0, 0, 0.35);
+  --dash-glow-a: rgba(18, 134, 95, 0.22);
+  --dash-glow-b: rgba(216, 242, 92, 0.06);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-surface-subtle: var(--surface-subtle);
+
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+
+  --color-muted: var(--muted);
+  --color-muted-strong: var(--muted-strong);
+  --color-muted-soft: var(--muted-soft);
+  --color-faint: var(--faint);
+
+  --color-strong: var(--strong);
+  --color-strong-foreground: var(--strong-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-bright: var(--accent-bright);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-border: var(--accent-border);
+  --color-accent-solid: var(--accent-solid);
+  --color-accent-solid-hover: var(--accent-solid-hover);
+  --color-highlight: var(--highlight);
+  --color-highlight-foreground: var(--highlight-foreground);
+
+  --color-danger: var(--danger);
+  --color-danger-strong: var(--danger-strong);
+  --color-danger-soft: var(--danger-soft);
+  --color-danger-border: var(--danger-border);
+
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-warning-border: var(--warning-border);
+
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
+  --color-info-border: var(--info-border);
+
+  --color-shipped: var(--shipped);
+  --color-shipped-soft: var(--shipped-soft);
+  --color-shipped-border: var(--shipped-border);
+
+  --color-glass: var(--glass);
+  --color-glass-strong: var(--glass-strong);
+  --color-glass-border: var(--glass-border);
+
+  --font-sans: var(--font-geist-sans);
+  --font-display: var(--font-display-face);
+  --font-mono: var(--font-geist-mono);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--background);
+  }
+
+  html[data-theme="light"] {
+    color-scheme: light;
+  }
+
+  html[data-theme="dark"] {
+    color-scheme: dark;
+  }
+
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+    text-rendering: optimizeLegibility;
+    transition:
+      background-color 180ms ease,
+      color 180ms ease;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display-face), var(--font-geist-sans), Arial, sans-serif;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: var(--accent-soft);
+    color: var(--accent-strong);
+  }
+
+  /*
+   * A sensible fallback for links and controls that do not define their own
+   * focus ring. Tailwind utilities such as `focus-visible:ring-2` and
+   * `focus-visible:outline-none` take precedence.
+   */
+  :where(a, button, input, select, textarea, summary):focus-visible {
+    outline: 2px solid var(--accent-bright);
+    outline-offset: 2px;
+  }
+}
+
+/*
+ * Keep keyboard focus offsets aligned with the active theme unless a component
+ * deliberately sets a different offset colour (for example on a dark panel).
+ */
+html[data-theme="dark"] :where(a, button, input, select, textarea, summary) {
+  --tw-ring-offset-color: var(--background);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  body {
+    transition: none;
+  }
+}
+
+/*
+ * Glass utilities. `backdrop-filter` is only applied where supported; the
+ * translucent fallback colours are already readable on their own.
+ */
+@utility glass {
+  background-color: var(--glass);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4);
+  backdrop-filter: blur(18px) saturate(1.4);
+}
+
+@utility glass-strong {
+  background-color: var(--glass-strong);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  -webkit-backdrop-filter: blur(24px) saturate(1.5);
+  backdrop-filter: blur(24px) saturate(1.5);
+}
+
+/* Soft ambient gradient behind dashboard content. */
+@utility dash-backdrop {
+  background-color: var(--background);
+  background-image:
+    radial-gradient(60rem 28rem at 8% -8%, var(--dash-glow-a), transparent 60%),
+    radial-gradient(44rem 24rem at 100% 0%, var(--dash-glow-b), transparent 60%);
+  background-attachment: fixed;
+}
+
+@keyframes dash-rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@utility animate-rise {
+  animation: dash-rise 320ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
